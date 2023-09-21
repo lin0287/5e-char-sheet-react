@@ -7,10 +7,11 @@ interface StatInputProps {
   label: string;
   property: string;
   value: number;
+  disabled: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function StatInput({ label, property, value, onChange }: StatInputProps) {
+function StatInput({ label, property, disabled, value, onChange }: StatInputProps) {
   return (
     <Col>
       <FloatingLabel
@@ -23,6 +24,7 @@ function StatInput({ label, property, value, onChange }: StatInputProps) {
           type="number"
           required
           min="1"
+          disabled={disabled}
           max="20"
           onChange={onChange}
         />
