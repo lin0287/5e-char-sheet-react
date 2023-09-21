@@ -1,6 +1,9 @@
+import CharacterCreation from "../CharacterCreation/CharacterCreation";
 
 function BasicDetails (){
-  return <p>BasicDetails</p>;
+  return (
+    <CharacterCreation/>
+  )
 };
 
 export default BasicDetails;

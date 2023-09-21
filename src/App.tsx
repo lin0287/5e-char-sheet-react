@@ -22,12 +22,12 @@ function App() {
   return (
     <BrowserRouter>
       <NavigationBar/>
-      <div className="px-5">
+      <div className="p-3">
         <Routes>
           <Route index path={"/basic-details"} element={<BasicDetails/>}/>
           <Route path={"/feats-traits"} element={<FeatsTraits/>}/>
           <Route path={"/spells"} element={<Spells/>}/>
-          <Route path={"/config"} element={<Config StandardArray={standardArray} setStatsArray={setStatsArray} />}/>
+          <Route path={"/config"} element={<Config standardArray={standardArray} setStatsArray={setStatsArray} />}/>
           <Route path="/" element={ <Navigate to="/basic-details" /> } />
         </Routes>
       </div>
