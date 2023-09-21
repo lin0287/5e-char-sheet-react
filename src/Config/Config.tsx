@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Accordion, Button, Form } from 'react-bootstrap';
 import './Config.css';
 import StandardArray from './StandardArray';
-import { useStats } from '../StatsContext';
+import { useGlobalContext } from '../GlobalContext';
 
 function Config() {
-  const { statsArray, setStatsArray } = useStats();
+  const { statsArray} = useGlobalContext();
   const [validated, setValidated] = useState(false);
 
   useEffect(() => {
-    if (statsArray.str !== 0) {
+    if (statsArray.str !== 0 && statsArray.dex !== 0 && statsArray.con !== 0 &&
+      statsArray.wis !== 0 && statsArray.int !== 0 && statsArray.cha !== 0) {
       setValidated(true);
     }
   }, []);

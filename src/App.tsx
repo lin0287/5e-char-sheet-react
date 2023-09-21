@@ -7,12 +7,12 @@ import BasicDetails from './BasicDetails/BasicDetails';
 import FeatsTraits from './Feats-Traits/FeatsTraits';
 import Spells from './Spells/Spells';
 import Config from './Config/Config';
-import { StatsProvider } from './StatsContext';
+import { AppContextProvider } from './GlobalContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <StatsProvider>
+      <AppContextProvider>
         <NavigationBar />
         <div className="p-3">
           <Routes>
@@ -23,7 +23,7 @@ function App() {
             <Route path="/" element={<Navigate to="/basic-details" />} />
           </Routes>
         </div>
-      </StatsProvider>
+      </AppContextProvider>
     </BrowserRouter>
   );
 }

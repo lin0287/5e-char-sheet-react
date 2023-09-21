@@ -1,14 +1,14 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import StatInput from './StatInput';
-import { useStats } from '../StatsContext';
+import { useGlobalContext } from '../GlobalContext';
 
 interface StandardArrayProps {
   validated: boolean; // Define the prop here
 }
 
 function StandardArray({ validated }: StandardArrayProps) {
-  const { statsArray, setStatsArray } = useStats();
+  const { statsArray, setStatsArray } = useGlobalContext();
 
   function setStatsChange(property: keyof typeof statsArray, value: number) {
     updateStatProperty(property, value);
