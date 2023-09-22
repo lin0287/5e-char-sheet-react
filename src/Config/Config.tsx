@@ -5,12 +5,12 @@ import StandardArray from './StandardArray';
 import { useGlobalContext } from '../GlobalContext';
 
 function Config() {
-  const { statsArray} = useGlobalContext();
+  const { stdArray} = useGlobalContext();
   const [validated, setValidated] = useState(false);
 
   useEffect(() => {
-    if (statsArray.str !== 0 && statsArray.dex !== 0 && statsArray.con !== 0 &&
-      statsArray.wis !== 0 && statsArray.int !== 0 && statsArray.cha !== 0) {
+    if (stdArray.str !== 0 && stdArray.dex !== 0 && stdArray.con !== 0 &&
+      stdArray.wis !== 0 && stdArray.int !== 0 && stdArray.cha !== 0) {
       setValidated(true);
     }
   }, []);
@@ -34,7 +34,7 @@ function Config() {
             <StandardArray validated={validated}/>
             {!validated ? (
               <Button type="submit" variant="primary">
-                Submit
+                Next
               </Button>
             ) : (
               ''

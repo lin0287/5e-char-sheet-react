@@ -23,6 +23,25 @@ export enum bonusType {
   Cha = "Cha"
 }
 
+export function toBonusEnum(input: string): bonusType | undefined {
+  switch (input) {
+    case "Str":
+      return bonusType.Str;
+    case "Dex":
+      return bonusType.Dex;
+    case "Con":
+      return bonusType.Con;
+    case "Int":
+      return bonusType.Int;
+    case "Wis":
+      return bonusType.Wis;
+    case "Cha":
+      return bonusType.Cha;
+    default:
+      return undefined;
+  }
+}
+
 export const Dragonborn: readonly playerRace[] = [
   { value: 'Black Dragonborn', label: 'Black Dragonborn', bonuses: [bonusType.Str, bonusType.Cha], },
   { value: 'Blue Dragonborn', label: 'Blue Dragonborn', bonuses: [bonusType.Str, bonusType.Cha], },

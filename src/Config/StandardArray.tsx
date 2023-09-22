@@ -8,14 +8,14 @@ interface StandardArrayProps {
 }
 
 function StandardArray({ validated }: StandardArrayProps) {
-  const { statsArray, setStatsArray } = useGlobalContext();
+  const { stdArray, setStdArray } = useGlobalContext();
 
-  function setStatsChange(property: keyof typeof statsArray, value: number) {
+  function setStatsChange(property: keyof typeof stdArray, value: number) {
     updateStatProperty(property, value);
   }
 
-  function updateStatProperty(property: keyof typeof statsArray, value: number) {
-    setStatsArray((prevStatsArray) => ({
+  function updateStatProperty(property: keyof typeof stdArray, value: number) {
+    setStdArray((prevStatsArray) => ({
       ...prevStatsArray,
       [property]: value,
     }));
@@ -26,42 +26,42 @@ function StandardArray({ validated }: StandardArrayProps) {
       <StatInput
         label="Strength"
         property="str"
-        value={statsArray.str}
+        value={stdArray.str}
         disabled={validated}
         onChange={(event) => setStatsChange('str', parseInt(event.target.value))}
       />
       <StatInput
         label="Dexterity"
         property="dex"
-        value={statsArray.dex}
+        value={stdArray.dex}
         disabled={validated}
         onChange={(event) => setStatsChange('dex', parseInt(event.target.value))}
       />
       <StatInput
         label="Constitution"
         property="con"
-        value={statsArray.con}
+        value={stdArray.con}
         disabled={validated}
         onChange={(event) => setStatsChange('con', parseInt(event.target.value))}
       />
       <StatInput
         label="Intelligence"
         property="int"
-        value={statsArray.int}
+        value={stdArray.int}
         disabled={validated}
         onChange={(event) => setStatsChange('int', parseInt(event.target.value))}
       />
       <StatInput
         label="Wisdom"
         property="wis"
-        value={statsArray.wis}
+        value={stdArray.wis}
         disabled={validated}
         onChange={(event) => setStatsChange('wis', parseInt(event.target.value))}
       />
       <StatInput
         label="Charisma"
         property="cha"
-        value={statsArray.cha}
+        value={stdArray.cha}
         disabled={validated}
         onChange={(event) => setStatsChange('cha', parseInt(event.target.value))}
       />

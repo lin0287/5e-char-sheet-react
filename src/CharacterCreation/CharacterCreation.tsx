@@ -1,14 +1,23 @@
-import {Accordion} from "react-bootstrap";
+import {Accordion, Alert} from "react-bootstrap";
 import {CharacterRace} from "./CharacterRace/CharacterRace";
+import {useGlobalContext} from "../GlobalContext";
 
 function CharacterCreation (){
+  const { stdArray} = useGlobalContext();
 
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
         <Accordion.Header>Racial Options</Accordion.Header>
         <Accordion.Body>
-          <CharacterRace/>
+          {
+            (stdArray.str !== 0 && stdArray.dex !== 0 && stdArray.con !== 0 &&
+              stdArray.wis !== 0 && stdArray.int !== 0 && stdArray.cha !== 0)?
+              <CharacterRace/>:<Alert variant={"warning"}>
+                Please set the Standard Array prior to setting Race Info!
+              </Alert>
+          }
+
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
