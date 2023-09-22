@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import {HashRouter, Navigate, Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import NavigationBar from './Navbar/NavigationBar';
@@ -11,7 +11,7 @@ import { AppContextProvider } from './GlobalContext';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AppContextProvider>
         <NavigationBar />
         <div className="p-3">
@@ -24,7 +24,7 @@ function App() {
           </Routes>
         </div>
       </AppContextProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

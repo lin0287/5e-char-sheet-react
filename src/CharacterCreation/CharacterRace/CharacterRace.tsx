@@ -1,12 +1,12 @@
 import {Button, Col, Form, Row} from "react-bootstrap";
 import Select from "react-select";
 import {bonusType, groupedOptions, playerRace} from "./CharacterRaceData";
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {addStatsArray, AppContext, AppContextType, StatsArray} from "../../GlobalContext";
 
 export function CharacterRace() {
   const context = useContext(AppContext) as AppContextType;
-  const { playerRace, setPlayerRace, setStatsArray, stdArray} = context;
+  const { playerRace, setPlayerRace, setStatsArray, statsArray, stdArray} = context;
   const [primaryStat, setPrimaryStat] = useState<bonusType | undefined>(undefined);
   const [secondaryStat, setSecondaryStat] = useState<bonusType | undefined>(undefined);
 
@@ -19,6 +19,13 @@ export function CharacterRace() {
       setSecondaryStat(race.bonuses.at(1));
     }
   }
+
+  useEffect(() => {
+    if (statsArray.str !== 0 && statsArray.dex !== 0 && statsArray.con !== 0 &&
+      statsArray.wis !== 0 && statsArray.int !== 0 && statsArray.cha !== 0) {
+      setValidated(true);
+    }
+  }, []);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     const form = event.currentTarget;
@@ -75,6 +82,7 @@ export function CharacterRace() {
           <Form.Label>Character Race</Form.Label>
           <Select
             required
+            isDisabled={validated}
             value={playerRace || null}
             onChange={(selectedValue) => {
               selectRace(selectedValue as playerRace | null);
@@ -85,7 +93,7 @@ export function CharacterRace() {
         </Col>
         <Col>
           <Form.Label>+2 Stat</Form.Label>
-          <Form.Select value={primaryStat} defaultValue="" required>
+          <Form.Select value={primaryStat} defaultValue="" required disabled={validated}>
             <option value="Str">Strength</option>
             <option value="Dex">Dexterity</option>
             <option value="Con">Constitution</option>
@@ -96,7 +104,7 @@ export function CharacterRace() {
         </Col>
         <Col>
           <Form.Label>+1 Stat</Form.Label>
-          <Form.Select value={secondaryStat} defaultValue="" required>
+          <Form.Select value={secondaryStat} defaultValue="" required disabled={validated}>
             <option value="Str">Strength</option>
             <option value="Dex">Dexterity</option>
             <option value="Con">Constitution</option>
